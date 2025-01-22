@@ -1,0 +1,10 @@
+C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\bin\Debug\yeristasyonu.exe.config
+C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\bin\Debug\yeristasyonu.exe
+C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\bin\Debug\yeristasyonu.pdb
+C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\obj\Debug\yeristasyonu.csproj.AssemblyReference.cache
+C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\obj\Debug\yeristasyonu.Form1.resources
+C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\obj\Debug\yeristasyonu.Properties.Resources.resources
+C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\obj\Debug\yeristasyonu.csproj.GenerateResource.cache
+C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\obj\Debug\yeristasyonu.csproj.CoreCompileInputs.cache
+C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\obj\Debug\yeristasyonu.exe
+C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\obj\Debug\yeristasyonu.pdb

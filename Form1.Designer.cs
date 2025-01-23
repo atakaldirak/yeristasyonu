@@ -1,4 +1,7 @@
-﻿namespace yeristasyonu
+﻿using System.IO;
+using System.Windows.Forms;
+
+namespace yeristasyonu
 {
     partial class Form1
     {
@@ -73,6 +76,11 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnSaveData_Click = new System.Windows.Forms.Button();
+            this.btnStartSave = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnStopSave = new System.Windows.Forms.Button();
+            this.datalog = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -81,6 +89,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -332,7 +341,7 @@
             this.groupBox4.Controls.Add(this.lblZValue);
             this.groupBox4.Location = new System.Drawing.Point(12, 250);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(200, 214);
+            this.groupBox4.Size = new System.Drawing.Size(95, 214);
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Raw Telemetry";
@@ -415,12 +424,67 @@
             title4.Text = "Z Axis";
             this.chart3.Titles.Add(title4);
             // 
+            // btnSaveData_Click
+            // 
+            this.btnSaveData_Click.Location = new System.Drawing.Point(11, 31);
+            this.btnSaveData_Click.Name = "btnSaveData_Click";
+            this.btnSaveData_Click.Size = new System.Drawing.Size(75, 52);
+            this.btnSaveData_Click.TabIndex = 22;
+            this.btnSaveData_Click.Text = "Select Folder";
+            this.btnSaveData_Click.UseVisualStyleBackColor = true;
+            this.btnSaveData_Click.Click += new System.EventHandler(this.btnSaveData_Click_Click);
+            // 
+            // btnStartSave
+            // 
+            this.btnStartSave.Location = new System.Drawing.Point(11, 89);
+            this.btnStartSave.Name = "btnStartSave";
+            this.btnStartSave.Size = new System.Drawing.Size(75, 52);
+            this.btnStartSave.TabIndex = 23;
+            this.btnStartSave.Text = "Log Data";
+            this.btnStartSave.UseVisualStyleBackColor = true;
+            this.btnStartSave.Click += new System.EventHandler(this.btnStartSave_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.datalog);
+            this.groupBox5.Controls.Add(this.btnStopSave);
+            this.groupBox5.Controls.Add(this.btnStartSave);
+            this.groupBox5.Controls.Add(this.btnSaveData_Click);
+            this.groupBox5.Location = new System.Drawing.Point(113, 250);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(99, 214);
+            this.groupBox5.TabIndex = 22;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Datalogging";
+            // 
+            // btnStopSave
+            // 
+            this.btnStopSave.Location = new System.Drawing.Point(11, 147);
+            this.btnStopSave.Name = "btnStopSave";
+            this.btnStopSave.Size = new System.Drawing.Size(75, 52);
+            this.btnStopSave.TabIndex = 24;
+            this.btnStopSave.Text = "Stop Logging";
+            this.btnStopSave.UseVisualStyleBackColor = true;
+            this.btnStopSave.Click += new System.EventHandler(this.btnStopSave_Click);
+            // 
+            // datalog
+            // 
+            this.datalog.AutoSize = true;
+            this.datalog.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.datalog.ForeColor = System.Drawing.Color.Red;
+            this.datalog.Location = new System.Drawing.Point(8, 16);
+            this.datalog.Name = "datalog";
+            this.datalog.Size = new System.Drawing.Size(81, 13);
+            this.datalog.TabIndex = 23;
+            this.datalog.Text = "Select Folder";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.chart3);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.chart1);
@@ -452,6 +516,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -490,6 +556,15 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
+        private SaveFileDialog saveFileDialog1;
+        private Button btnSaveData_Click;
+        private Button btnStartSave;
+        private bool isPaused = false;
+        private StreamWriter fileWriter = null;
+        private GroupBox groupBox5;
+        private Button btnStopSave;
+        private bool isSavingData = false;
+        private Label datalog;
     }
 }
 

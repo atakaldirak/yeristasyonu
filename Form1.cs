@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
@@ -55,6 +56,11 @@ namespace yeristasyonu
         
         private void Form1_Load(object sender, EventArgs e)
         {
+            // SaveFileDialog'ı başlat
+            saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog1.Title = "Save Data As";
+
             String[] ports = SerialPort.GetPortNames();
             cbComPort.Items.AddRange(ports);
 
@@ -82,9 +88,6 @@ namespace yeristasyonu
             wSeries.ChartType = SeriesChartType.Line;
             wSeries.Color = Color.Black;
             chart4.Series.Add(wSeries);
-
-
-           
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
@@ -134,7 +137,19 @@ namespace yeristasyonu
 
                         UpdateChart();
                     }
- 
+
+                    // Eğer veri kaydetme başlatılmışsa, veriyi kaydedelim
+                    if (isSavingData)
+                    {
+                        // Veriyi txt dosyasına kaydedin
+                        if (saveFileDialog1.FileName != "")
+                        {
+                            using (StreamWriter writer = new StreamWriter(saveFileDialog1.FileName, true)) // 'true' parametresi ile ekleme yapıyoruz
+                            {
+                                writer.WriteLine(receivedData); // Alınan veriyi dosyaya yazdırıyoruz
+                            }
+                        }
+                    }
                 }
             }));
         }
@@ -197,7 +212,51 @@ namespace yeristasyonu
             chart4.ChartAreas[0].AxisX.Maximum = wValues.Count;
         }
 
+        private void btnSaveData_Click_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    using (StreamWriter writer = new StreamWriter(saveFileDialog1.FileName))
+                    {
+                        // Seri port üzerinden alınan veriyi olduğu gibi kaydediyoruz.
+                        writer.Write(txtReceivedData.Text); // Seri monitörde görünen veriyi yazdırıyoruz
+                    }
+                
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error saving data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStartSave_Click(object sender, EventArgs e)
+        {
+            isSavingData = true;
+            btnStopSave.Enabled = true;
+            btnStartSave.Enabled = false;
+            datalog.Text = "RECORDING";
+            datalog.ForeColor = Color.Green;
+        }
+
+        private void btnStopSave_Click(object sender, EventArgs e)
+        {
+            isSavingData = false;
+            btnStartSave.Enabled = true;
+            btnStopSave.Enabled = false;
+            datalog.Text = "NOTRECORDING";
+            datalog.ForeColor = Color.Red;
+        }
+
     }
+
 
 
 }

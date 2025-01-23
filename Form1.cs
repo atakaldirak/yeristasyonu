@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace yeristasyonu
 {
@@ -74,6 +75,14 @@ namespace yeristasyonu
                 lblStatus.ForeColor = Color.Red;
                 progressBar1.Value = 0;
             }
+        }
+
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            string receivedData = serialPort1.ReadExisting();
+            Invoke(new Action(() => {
+                txtReceivedData.AppendText(receivedData + Environment.NewLine);
+            }));
         }
     }
 }

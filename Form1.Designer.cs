@@ -58,13 +58,11 @@ namespace yeristasyonu
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtReceivedData = new System.Windows.Forms.TextBox();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
-            this.label3 = new System.Windows.Forms.Label();
+            this.camprogress = new System.Windows.Forms.ProgressBar();
+            this.camlabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.lblXValue = new System.Windows.Forms.Label();
             this.lblYValue = new System.Windows.Forms.Label();
@@ -79,8 +77,11 @@ namespace yeristasyonu
             this.btnSaveData_Click = new System.Windows.Forms.Button();
             this.btnStartSave = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnStopSave = new System.Windows.Forms.Button();
             this.datalog = new System.Windows.Forms.Label();
+            this.btnStopSave = new System.Windows.Forms.Button();
+            this.pictureBox57 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button23 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -90,6 +91,7 @@ namespace yeristasyonu
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -216,23 +218,23 @@ namespace yeristasyonu
             this.txtReceivedData.Size = new System.Drawing.Size(225, 72);
             this.txtReceivedData.TabIndex = 0;
             // 
-            // progressBar2
+            // camprogress
             // 
-            this.progressBar2.Location = new System.Drawing.Point(12, 505);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(237, 19);
-            this.progressBar2.TabIndex = 8;
+            this.camprogress.Location = new System.Drawing.Point(12, 505);
+            this.camprogress.Name = "camprogress";
+            this.camprogress.Size = new System.Drawing.Size(237, 19);
+            this.camprogress.TabIndex = 8;
             // 
-            // label3
+            // camlabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(121, 485);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 17);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "DISCONNECTED";
+            this.camlabel.AutoSize = true;
+            this.camlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.camlabel.ForeColor = System.Drawing.Color.Red;
+            this.camlabel.Location = new System.Drawing.Point(121, 485);
+            this.camlabel.Name = "camlabel";
+            this.camlabel.Size = new System.Drawing.Size(128, 17);
+            this.camlabel.TabIndex = 7;
+            this.camlabel.Text = "DISCONNECTED";
             // 
             // label4
             // 
@@ -244,21 +246,12 @@ namespace yeristasyonu
             this.label4.TabIndex = 6;
             this.label4.Text = "Camera Status: ";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(9, 48);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Connect";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.button23);
             this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Location = new System.Drawing.Point(12, 156);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(200, 79);
@@ -273,15 +266,6 @@ namespace yeristasyonu
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 10;
             this.textBox1.Text = "192.168.157.134";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(96, 48);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Disconnect";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -360,12 +344,12 @@ namespace yeristasyonu
             // 
             chartArea1.Name = "ChartArea1";
             this.chart4.ChartAreas.Add(chartArea1);
-            this.chart4.Location = new System.Drawing.Point(990, 485);
+            this.chart4.Location = new System.Drawing.Point(1531, 12);
             this.chart4.Name = "chart4";
             series1.ChartArea = "ChartArea1";
             series1.Name = "Series1";
             this.chart4.Series.Add(series1);
-            this.chart4.Size = new System.Drawing.Size(239, 184);
+            this.chart4.Size = new System.Drawing.Size(361, 738);
             this.chart4.TabIndex = 18;
             this.chart4.Text = "chart4";
             title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
@@ -377,12 +361,12 @@ namespace yeristasyonu
             // 
             chartArea2.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea2);
-            this.chart1.Location = new System.Drawing.Point(255, 485);
+            this.chart1.Location = new System.Drawing.Point(12, 757);
             this.chart1.Name = "chart1";
             series2.ChartArea = "ChartArea1";
             series2.Name = "Series1";
             this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(239, 184);
+            this.chart1.Size = new System.Drawing.Size(580, 284);
             this.chart1.TabIndex = 19;
             this.chart1.Text = "chart1";
             title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
@@ -394,12 +378,12 @@ namespace yeristasyonu
             // 
             chartArea3.Name = "ChartArea1";
             this.chart2.ChartAreas.Add(chartArea3);
-            this.chart2.Location = new System.Drawing.Point(500, 485);
+            this.chart2.Location = new System.Drawing.Point(598, 757);
             this.chart2.Name = "chart2";
             series3.ChartArea = "ChartArea1";
             series3.Name = "Series1";
             this.chart2.Series.Add(series3);
-            this.chart2.Size = new System.Drawing.Size(239, 184);
+            this.chart2.Size = new System.Drawing.Size(716, 285);
             this.chart2.TabIndex = 20;
             this.chart2.Text = "chart2";
             title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
@@ -411,12 +395,12 @@ namespace yeristasyonu
             // 
             chartArea4.Name = "ChartArea1";
             this.chart3.ChartAreas.Add(chartArea4);
-            this.chart3.Location = new System.Drawing.Point(745, 485);
+            this.chart3.Location = new System.Drawing.Point(1320, 756);
             this.chart3.Name = "chart3";
             series4.ChartArea = "ChartArea1";
             series4.Name = "Series1";
             this.chart3.Series.Add(series4);
-            this.chart3.Size = new System.Drawing.Size(239, 184);
+            this.chart3.Size = new System.Drawing.Size(572, 285);
             this.chart3.TabIndex = 21;
             this.chart3.Text = "chart3";
             title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
@@ -457,16 +441,6 @@ namespace yeristasyonu
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Datalogging";
             // 
-            // btnStopSave
-            // 
-            this.btnStopSave.Location = new System.Drawing.Point(11, 147);
-            this.btnStopSave.Name = "btnStopSave";
-            this.btnStopSave.Size = new System.Drawing.Size(75, 52);
-            this.btnStopSave.TabIndex = 24;
-            this.btnStopSave.Text = "Stop Logging";
-            this.btnStopSave.UseVisualStyleBackColor = true;
-            this.btnStopSave.Click += new System.EventHandler(this.btnStopSave_Click);
-            // 
             // datalog
             // 
             this.datalog.AutoSize = true;
@@ -478,12 +452,50 @@ namespace yeristasyonu
             this.datalog.TabIndex = 23;
             this.datalog.Text = "Select Folder";
             // 
+            // btnStopSave
+            // 
+            this.btnStopSave.Location = new System.Drawing.Point(11, 147);
+            this.btnStopSave.Name = "btnStopSave";
+            this.btnStopSave.Size = new System.Drawing.Size(75, 52);
+            this.btnStopSave.TabIndex = 24;
+            this.btnStopSave.Text = "Stop Logging";
+            this.btnStopSave.UseVisualStyleBackColor = true;
+            this.btnStopSave.Click += new System.EventHandler(this.btnStopSave_Click);
+            // 
+            // pictureBox57
+            // 
+            this.pictureBox57.Location = new System.Drawing.Point(255, 12);
+            this.pictureBox57.Name = "pictureBox57";
+            this.pictureBox57.Size = new System.Drawing.Size(1270, 738);
+            this.pictureBox57.TabIndex = 23;
+            this.pictureBox57.TabStop = false;
+            this.pictureBox57.Click += new System.EventHandler(this.pictureBox57_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 50);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "Connect";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button23
+            // 
+            this.button23.Location = new System.Drawing.Point(112, 50);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(75, 23);
+            this.button23.TabIndex = 25;
+            this.button23.Text = "Disconnect";
+            this.button23.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.chart3);
             this.Controls.Add(this.chart2);
@@ -491,8 +503,8 @@ namespace yeristasyonu
             this.Controls.Add(this.chart4);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.progressBar2);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.camprogress);
+            this.Controls.Add(this.camlabel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.progressBar1);
@@ -500,6 +512,7 @@ namespace yeristasyonu
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.pictureBox57);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = " Zaground V1";
@@ -518,6 +531,7 @@ namespace yeristasyonu
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -538,12 +552,10 @@ namespace yeristasyonu
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtReceivedData;
-        private System.Windows.Forms.ProgressBar progressBar2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ProgressBar camprogress;
+        private System.Windows.Forms.Label camlabel;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lblXValue;
@@ -565,6 +577,9 @@ namespace yeristasyonu
         private Button btnStopSave;
         private bool isSavingData = false;
         private Label datalog;
+        private PictureBox pictureBox57;
+        private Button button1;
+        private Button button23;
     }
 }
 

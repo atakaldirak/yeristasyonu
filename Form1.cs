@@ -6,19 +6,31 @@ using System.Drawing;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using AForge.Video;
+using AForge.Video.DirectShow;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace yeristasyonu
 {
+
     public partial class Form1 : Form
     {
+        private MJPEGStream stream;
+        private string esp32CamUrl = "http://192.168.42.134:81/stream";
+
         public Form1()
         {
             InitializeComponent();
+            pictureBox57.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.WindowState = FormWindowState.Maximized;
+            this.TopMost = true;
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -88,6 +100,9 @@ namespace yeristasyonu
             wSeries.ChartType = SeriesChartType.Line;
             wSeries.Color = Color.Black;
             chart4.Series.Add(wSeries);
+
+            stream = new MJPEGStream(esp32CamUrl);
+            stream.NewFrame += video_NewFrame;
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
@@ -254,9 +269,51 @@ namespace yeristasyonu
             datalog.Text = "NOTRECORDING";
             datalog.ForeColor = Color.Red;
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            {
+                string esp32CamUrl = "http://192.168.42.134:81/stream";
+                stream = new MJPEGStream(esp32CamUrl);
+                stream.NewFrame += video_NewFrame;
+                stream.Start();
+                button23.Enabled = true;
+                button1.Enabled = false;
+                camlabel.Text = "CONNECTED";
+                camlabel.ForeColor = Color.Green;
+                camprogress.Value = 100;
+            }
+        }
+ 
 
+        private void button23_Click(object sender, EventArgs e)
+        {
+            if (stream != null && stream.IsRunning)
+            {
+                stream.Stop();
+                stream = null;
+                button23.Enabled = false;
+                button1.Enabled = true;
+                camlabel.Text = "DISCONNECTED";
+                camlabel.ForeColor = Color.Red;
+                camprogress.Value = 0;
+            }
+        }
+        void video_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        {
+            {
+                Bitmap frame = (Bitmap)eventArgs.Frame.Clone();
+                pictureBox57.Image = frame;
+            }
+        }
+        private void pictureBox57_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
     }
 
+    
+    
 
 
-}
+

@@ -8,3 +8,8 @@ C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\obj\Debug\yeristasyonu.csp
 C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\obj\Debug\yeristasyonu.csproj.CoreCompileInputs.cache
 C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\obj\Debug\yeristasyonu.exe
 C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\obj\Debug\yeristasyonu.pdb
+C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\bin\Debug\AForge.dll
+C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\bin\Debug\AForge.Video.DirectShow.dll
+C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\bin\Debug\AForge.Video.dll
+C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\bin\Debug\AForge.xml
+C:\Users\atakl\source\repos\yeristasyonu\yeristasyonu\obj\Debug\yeristas.C3EE3144.Up2Date

@@ -28,9 +28,9 @@ namespace yeristasyonu
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnConnect_Click(object sender, EventArgs e)
         {
-            serialPort1.PortName = cbComPort.Text; // Düzeltildi
+            serialPort1.PortName = cbComPort.Text;
             serialPort1.BaudRate = 9600;
 
             try
@@ -39,6 +39,9 @@ namespace yeristasyonu
                 btnConnect.Enabled = false;
                 btnDisconnect.Enabled = true;
                 cbComPort.Enabled = false;
+                lblStatus.Text = "CONNECTED";
+                lblStatus.ForeColor = Color.Green;
+                progressBar1.Value = 100;
             }
             catch (Exception ex)
             {
@@ -56,6 +59,7 @@ namespace yeristasyonu
             btnConnect.Enabled = true;
             btnDisconnect.Enabled = false;
             cbComPort.Enabled = true;
+            progressBar1.Value = 0;
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
@@ -66,6 +70,9 @@ namespace yeristasyonu
                 btnConnect.Enabled = true;
                 btnDisconnect.Enabled = false;
                 cbComPort.Enabled = true;
+                lblStatus.Text = "DISCONNECTED";
+                lblStatus.ForeColor = Color.Red;
+                progressBar1.Value = 0;
             }
         }
     }

@@ -52,7 +52,7 @@ namespace yeristasyonu
                 btnDisconnect.Enabled = false;
             } // Kapanış düzeltildi
         }
-
+        
         private void Form1_Load(object sender, EventArgs e)
         {
             String[] ports = SerialPort.GetPortNames();
@@ -65,18 +65,22 @@ namespace yeristasyonu
 
             Series xSeries = new Series("XSeries");
             xSeries.ChartType = SeriesChartType.Line; // Çizgi grafik türü
+            xSeries.Color = Color.Black;
             chart1.Series.Add(xSeries);
 
             Series ySeries = new Series("YSeries");
             ySeries.ChartType = SeriesChartType.Line;
+            ySeries.Color = Color.Black;
             chart2.Series.Add(ySeries);
 
             Series zSeries = new Series("ZSeries");
             zSeries.ChartType = SeriesChartType.Line;
+            zSeries.Color = Color.Black;
             chart3.Series.Add(zSeries);
 
             Series wSeries = new Series("WSeries");
-            zSeries.ChartType = SeriesChartType.Line;
+            wSeries.ChartType = SeriesChartType.Line;
+            wSeries.Color = Color.Black;
             chart4.Series.Add(wSeries);
 
 
@@ -130,18 +134,25 @@ namespace yeristasyonu
 
                         UpdateChart();
                     }
-                    else
-                    {
-                        // Handle the case where parsing fails
-                        MessageBox.Show("Received data is not in the correct format.");
-                    }
+ 
                 }
             }));
         }
 
         // Grafiklerin güncellenmesi
+        private int maxDataPoints = 100; // Grafiklerde tutulacak maksimum veri noktası
+
         private void UpdateChart()
         {
+            // Eğer veriler çok fazla oldugunda, ilk verileri çıkarıyoruz
+            if (xValues.Count > maxDataPoints)
+            {
+                xValues.RemoveAt(0); // İlk veriyi çıkar
+                yValues.RemoveAt(0); // İlk veriyi çıkar
+                zValues.RemoveAt(0); // İlk veriyi çıkar
+                wValues.RemoveAt(0); // İlk veriyi çıkar
+            }
+
             // X, Y, Z ve W serilerinin veri noktalarını sırasıyla ekleyelim
             chart1.Series["XSeries"].Points.Clear();
             chart2.Series["YSeries"].Points.Clear();
@@ -171,7 +182,22 @@ namespace yeristasyonu
             {
                 chart4.Series["WSeries"].Points.AddXY(i, wValues[i]);
             }
+
+            // Verinin akıp geçmesini sağlamak için X ekseninin sınırlamalarını ayarlayalım
+            chart1.ChartAreas[0].AxisX.Minimum = xValues.Count > 0 ? xValues.Count - maxDataPoints : 0;
+            chart1.ChartAreas[0].AxisX.Maximum = xValues.Count;
+
+            chart2.ChartAreas[0].AxisX.Minimum = yValues.Count > 0 ? yValues.Count - maxDataPoints : 0;
+            chart2.ChartAreas[0].AxisX.Maximum = yValues.Count;
+
+            chart3.ChartAreas[0].AxisX.Minimum = zValues.Count > 0 ? zValues.Count - maxDataPoints : 0;
+            chart3.ChartAreas[0].AxisX.Maximum = zValues.Count;
+
+            chart4.ChartAreas[0].AxisX.Minimum = wValues.Count > 0 ? wValues.Count - maxDataPoints : 0;
+            chart4.ChartAreas[0].AxisX.Maximum = wValues.Count;
         }
 
     }
+
+
 }
